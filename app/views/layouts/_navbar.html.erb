@@ -13,12 +13,23 @@
 		<div class="navbar-end">
             <div class="navbar-item">
 				<div class="field is-grouped">
+                    <% if user_signed_in? %>
+                    <p class="control">
+                        <%= current_user.username %>
+                    </p>
                     <p class="control">
                         <%= link_to 'New Tweeet', new_tweet_path, class: "button is-info is-inverted" %>
                     </p>
-					<p class="control">
-                        <%= link_to 'Sign Up', '#', class: "button is-info" %>
+                    <p class="control">
+                        <%= link_to 'Sign out', destroy_user_session_path, method: :delete , class: "button is-info is-inverted" %>
                     </p>
+                    <% else %>
+
+					<p class="control">
+                        <%= link_to 'Sign Up', new_user_registration_path , class: "button is-info" %>
+                    </p>
+
+                    <% end %>
                 </div>
 			</div>
 		</div>
